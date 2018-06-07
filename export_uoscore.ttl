@@ -1,0 +1,114 @@
+@prefix ocrer: <http://purl.org/net/OCRe/research.owl#> .
+@prefix ns:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geopolitical: <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix cito:  <http://purl.org/spar/cito/> .
+@prefix geo:   <http://aims.fao.org/aos/geopolitical.owl#> .
+@prefix kdsf-vivo: <http://lod.tib.eu/onto/kdsf/> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix vivo:  <http://vivoweb.org/ontology/core#> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix uoscore: <http://fis.virtuos.uos.de/vivo/ontology/uoscore/> .
+@prefix kdsf:  <http://kerndatensatz-forschung.de/owl/Basis#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix c4o:   <http://purl.org/spar/c4o/> .
+@prefix study_protocol: <http://purl.org/net/OCRe/study_protocol.owl#> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix afn:   <http://jena.apache.org/ARQ/function#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> .
+@prefix skos2: <http://www.w3.org/2008/05/skos#> .
+@prefix core:  <http://vivoweb.org/ontology/core#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bibo:  <http://purl.org/ontology/bibo/> .
+@prefix vivo-de: <http://vivoweb.org/ontology/core/de#> .
+@prefix obo:   <http://purl.obolibrary.org/obo/> .
+@prefix kdsf-meta: <http://kerndatensatz-forschung.de/owl/Meta#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix statistics: <http://purl.org/net/OCRe/statistics.owl#> .
+
+uoscore:publishInfoReverse
+        a                        owl:ObjectProperty ;
+        rdfs:domain              bibo:Collection ;
+        rdfs:label               "Erscheinungsort für"@en-US ;
+        rdfs:range               kdsf:Publikation ;
+        vitro:displayLimitAnnot  "-1"^^xsd:int ;
+        owl:inverseOf            uoscore:publishInfo .
+
+uoscore:  a                        owl:Ontology ;
+        rdfs:label                 "UOS Core"@de-DE ;
+        vitro:ontologyPrefixAnnot  "uoscore" .
+
+uoscore:hatDenomination
+        a                              owl:ObjectProperty ;
+        rdfs:domain                    kdsf:Person ;
+        rdfs:label                     "hat Denomination"^^rdf:langString ;
+        rdfs:range                     uoscore:Denomination ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true .
+
+uoscore:Denomination  a          owl:Class ;
+        rdfs:label               "Denomination"^^rdf:langString ;
+        vitro:displayLimitAnnot  "-1"^^xsd:int ;
+        vitro:displayRankAnnot   "-1"^^xsd:int ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
+
+uoscore:link  a                       owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain                   kdsf:Publikation ;
+        rdfs:label                    "Link"@en-US ;
+        rdfs:range                    xsd:anyURI ;
+        obo:IAO_0000112               "URL der \"Quelle\" einer Publikation z.B. Scopus link." ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot    <http://vivoweb.org/ontology#vitroPropertyGrouplinks> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
+        vitro:publicDescriptionAnnot  "Dieser Eintrag ist für einen Link, unter dem die Publikation abgerufen / gefunden werden kann." .
+
+uoscore:publicationlanguage
+        a                              owl:ObjectProperty ;
+        rdfs:domain                    kdsf:Publikation ;
+        rdfs:label                     "Language"@en-US ;
+        rdfs:range                     vcard:Language ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupbibobscure> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:selectFromExistingAnnot  true .
+
+uoscore:publishInfo  a                 owl:ObjectProperty ;
+        rdfs:domain                    kdsf:Publikation ;
+        rdfs:label                     "veröffentlicht in"@en-US ;
+        rdfs:range                     bibo:Collection ;
+        rdfs:subPropertyOf             owl:topObjectProperty ;
+        vitro:hiddenFromDisplayBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
+        vitro:hiddenFromPublishBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
+        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
+        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
+                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
+        vitro:publicDescriptionAnnot   "Abbildung der Beziehung zwischen einer Publikation und dessen Erscheinungsort bzw. Quelle. " ;
+        vitro:selectFromExistingAnnot  true ;
+        owl:inverseOf                  uoscore:publishInfoReverse .
