@@ -1,114 +1,145 @@
-@prefix ocrer: <http://purl.org/net/OCRe/research.owl#> .
-@prefix ns:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
-@prefix ocresd: <http://purl.org/net/OCRe/study_design.owl#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix geopolitical: <http://aims.fao.org/aos/geopolitical.owl#> .
-@prefix cito:  <http://purl.org/spar/cito/> .
-@prefix geo:   <http://aims.fao.org/aos/geopolitical.owl#> .
-@prefix kdsf-vivo: <http://lod.tib.eu/onto/kdsf/> .
-@prefix terms: <http://purl.org/dc/terms/> .
-@prefix vivo:  <http://vivoweb.org/ontology/core#> .
-@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
-@prefix uoscore: <http://fis.virtuos.uos.de/vivo/ontology/uoscore/> .
-@prefix kdsf:  <http://kerndatensatz-forschung.de/owl/Basis#> .
-@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
-@prefix c4o:   <http://purl.org/spar/c4o/> .
-@prefix study_protocol: <http://purl.org/net/OCRe/study_protocol.owl#> .
-@prefix fabio: <http://purl.org/spar/fabio/> .
-@prefix afn:   <http://jena.apache.org/ARQ/function#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
-@prefix vitro-public: <http://vitro.mannlib.cornell.edu/ns/vitro/public#> .
-@prefix skos2: <http://www.w3.org/2008/05/skos#> .
-@prefix core:  <http://vivoweb.org/ontology/core#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bibo:  <http://purl.org/ontology/bibo/> .
-@prefix vivo-de: <http://vivoweb.org/ontology/core/de#> .
-@prefix obo:   <http://purl.obolibrary.org/obo/> .
-@prefix kdsf-meta: <http://kerndatensatz-forschung.de/owl/Meta#> .
-@prefix dc:    <http://purl.org/dc/elements/1.1/> .
-@prefix statistics: <http://purl.org/net/OCRe/statistics.owl#> .
-
-uoscore:publishInfoReverse
-        a                        owl:ObjectProperty ;
-        rdfs:domain              bibo:Collection ;
-        rdfs:label               "Erscheinungsort für"@en-US ;
-        rdfs:range               kdsf:Publikation ;
-        vitro:displayLimitAnnot  "-1"^^xsd:int ;
-        owl:inverseOf            uoscore:publishInfo .
-
-uoscore:  a                        owl:Ontology ;
-        rdfs:label                 "UOS Core"@de-DE ;
-        vitro:ontologyPrefixAnnot  "uoscore" .
-
-uoscore:hatDenomination
-        a                              owl:ObjectProperty ;
-        rdfs:domain                    kdsf:Person ;
-        rdfs:label                     "hat Denomination"^^rdf:langString ;
-        rdfs:range                     uoscore:Denomination ;
-        vitro:hiddenFromDisplayBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:hiddenFromPublishBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:selectFromExistingAnnot  true .
-
-uoscore:Denomination  a          owl:Class ;
-        rdfs:label               "Denomination"^^rdf:langString ;
-        vitro:displayLimitAnnot  "-1"^^xsd:int ;
-        vitro:displayRankAnnot   "-1"^^xsd:int ;
-        vitro:hiddenFromDisplayBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:hiddenFromPublishBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> .
-
-uoscore:link  a                       owl:FunctionalProperty , owl:DatatypeProperty ;
-        rdfs:domain                   kdsf:Publikation ;
-        rdfs:label                    "Link"@en-US ;
-        rdfs:range                    xsd:anyURI ;
-        obo:IAO_0000112               "URL der \"Quelle\" einer Publikation z.B. Scopus link." ;
-        vitro:hiddenFromDisplayBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:hiddenFromPublishBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:inPropertyGroupAnnot    <http://vivoweb.org/ontology#vitroPropertyGrouplinks> ;
-        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
-        vitro:publicDescriptionAnnot  "Dieser Eintrag ist für einen Link, unter dem die Publikation abgerufen / gefunden werden kann." .
-
-uoscore:publicationlanguage
-        a                              owl:ObjectProperty ;
-        rdfs:domain                    kdsf:Publikation ;
-        rdfs:label                     "Language"@en-US ;
-        rdfs:range                     vcard:Language ;
-        vitro:hiddenFromDisplayBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:hiddenFromPublishBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupbibobscure> ;
-        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:selectFromExistingAnnot  true .
-
-uoscore:publishInfo  a                 owl:ObjectProperty ;
-        rdfs:domain                    kdsf:Publikation ;
-        rdfs:label                     "veröffentlicht in"@en-US ;
-        rdfs:range                     bibo:Collection ;
-        rdfs:subPropertyOf             owl:topObjectProperty ;
-        vitro:hiddenFromDisplayBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#public> ;
-        vitro:hiddenFromPublishBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
-        vitro:inPropertyGroupAnnot     <http://vivoweb.org/ontology#vitroPropertyGroupoverview> ;
-        vitro:prohibitedFromUpdateBelowRoleLevelAnnot
-                <http://vitro.mannlib.cornell.edu/ns/vitro/role#curator> ;
-        vitro:publicDescriptionAnnot   "Abbildung der Beziehung zwischen einer Publikation und dessen Erscheinungsort bzw. Quelle. " ;
-        vitro:selectFromExistingAnnot  true ;
-        owl:inverseOf                  uoscore:publishInfoReverse .
+<?xml version="1.0" encoding="UTF-8"?><rdf:RDF
+    xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    xmlns:scires="http://vivoweb.org/ontology/scientific-research#"
+    xmlns:ocresst="http://purl.org/net/OCRe/statistics.owl#"
+    xmlns:kdsf-vivo="http://lod.tib.eu/onto/kdsf/"
+    xmlns:ocresd="http://purl.org/net/OCRe/study_design.owl#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:kdsf-meta="http://kerndatensatz-forschung.de/owl/Meta#"
+    xmlns:vivo-de="http://vivoweb.org/ontology/core/de#"
+    xmlns:obo="http://purl.obolibrary.org/obo/"
+    xmlns:geo="http://aims.fao.org/aos/geopolitical.owl#"
+    xmlns:c4o="http://purl.org/spar/c4o/"
+    xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+    xmlns:ro="http://purl.obolibrary.org/obo/ro.owl#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:skos2="http://www.w3.org/2008/05/skos#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:vivo="http://vivoweb.org/ontology/core#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:vitro-public="http://vitro.mannlib.cornell.edu/ns/vitro/public#"
+    xmlns:vitro="http://vitro.mannlib.cornell.edu/ns/vitro/0.7#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:cito="http://purl.org/spar/cito/"
+    xmlns:afn="http://jena.apache.org/ARQ/function#"
+    xmlns:swo="http://www.ebi.ac.uk/efo/swo/"
+    xmlns:kdsf="http://kerndatensatz-forschung.de/owl/Basis#"
+    xmlns:uoscore="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ocresp="http://purl.org/net/OCRe/study_protocol.owl#"
+    xmlns:ocrer="http://purl.org/net/OCRe/research.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+    xmlns:bibo="http://purl.org/ontology/bibo/"
+    xmlns:fabio="http://purl.org/spar/fabio/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <owl:Ontology rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/">
+    <vitro:ontologyPrefixAnnot>uoscore</vitro:ontologyPrefixAnnot>
+    <rdfs:label xml:lang="de-DE">UOS Core</rdfs:label>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/field">
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:publicDescriptionAnnot>Für die Beziehung zwischen Fachbereich und Fach</vitro:publicDescriptionAnnot>
+    <rdfs:range rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Fach"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:offerCreateNewOptionAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:offerCreateNewOptionAnnot>
+    <vitro:selectFromExistingAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:selectFromExistingAnnot>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupidentifiers"/>
+    <rdfs:domain rdf:resource="http://vivoweb.org/ontology/core#AcademicDepartment"/>
+    <rdfs:label xml:lang="de-DE">Fach</rdfs:label>
+    <rdfs:label xml:lang="de-DE">Field</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/hatverbundprojekt">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/hatpartnerorganisation"/>
+    </owl:inverseOf>
+    <rdfs:label xml:lang="en-US">Verbundprojekt</rdfs:label>
+    <rdfs:range rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Drittmittelprojekt"/>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Organisationseinheit"/>
+    <vitro:displayLimitAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >-1</vitro:displayLimitAnnot>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/hatpartnerorganisation">
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Drittmittelprojekt"/>
+    <vitro:offerCreateNewOptionAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:offerCreateNewOptionAnnot>
+    <rdfs:label xml:lang="en-US">Verbund/Partnerorganisation</rdfs:label>
+    <owl:inverseOf rdf:resource="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/hatverbundprojekt"/>
+    <vitro:selectFromExistingAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:selectFromExistingAnnot>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <rdfs:range rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Organisationseinheit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/institute">
+    <rdfs:range rdf:resource="http://vivoweb.org/ontology/core#Institute"/>
+    <vitro:publicDescriptionAnnot>Für die Beziehung zwischen Fachbereich und Institut</vitro:publicDescriptionAnnot>
+    <vitro:offerCreateNewOptionAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:offerCreateNewOptionAnnot>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <rdfs:label xml:lang="en-US">Institute</rdfs:label>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupidentifiers"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <rdfs:domain rdf:resource="http://vivoweb.org/ontology/core#AcademicDepartment"/>
+    <vitro:selectFromExistingAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</vitro:selectFromExistingAnnot>
+    <rdfs:label xml:lang="de-DE">Institut</rdfs:label>
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/academicdepartment">
+    <rdfs:label xml:lang="de-DE">Fachbereich</rdfs:label>
+    <rdfs:label xml:lang="en-US">Academic Department</rdfs:label>
+    <rdfs:range rdf:resource="http://vivoweb.org/ontology/core#AcademicDepartment"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://kerndatensatz-forschung.de/owl/Basis#Fach"/>
+          <rdf:Description rdf:about="http://vivoweb.org/ontology/core#Institute"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <vitro:displayLimitAnnot rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >-1</vitro:displayLimitAnnot>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/Denomination">
+    <rdfs:label xml:lang="de-DE">Denomination</rdfs:label>
+    <rdfs:label xml:lang="en-US">Denomination</rdfs:label>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Professoren"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupaffiliation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/schlagwoerter">
+    <rdfs:label xml:lang="en-US">Schlagwörter</rdfs:label>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Drittmittelprojekt"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupbibobscure"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/hatexterneprojektseite">
+    <rdfs:label xml:lang="en-US">Externe Projektseite</rdfs:label>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Drittmittelprojekt"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupbibobscure"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://fis.virtuos.uos.de/vivouos/ontology/uoscore/ergebniszusammenfassung">
+    <rdfs:label xml:lang="en-US">Ergebniszusammenfassung </rdfs:label>
+    <rdfs:domain rdf:resource="http://kerndatensatz-forschung.de/owl/Basis#Drittmittelprojekt"/>
+    <vitro:hiddenFromDisplayBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:prohibitedFromUpdateBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:hiddenFromPublishBelowRoleLevelAnnot rdf:resource="http://vitro.mannlib.cornell.edu/ns/vitro/role#public"/>
+    <vitro:inPropertyGroupAnnot rdf:resource="http://vivoweb.org/ontology#vitroPropertyGroupoverview"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
