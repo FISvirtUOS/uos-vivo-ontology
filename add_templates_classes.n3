@@ -1,0 +1,15 @@
+@prefix bibo:    <http://purl.org/ontology/bibo/> .
+@prefix vitro:   <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix kdsf:	 <http://kerndatensatz-forschung.de/owl/Basis#> .
+ 
+# This file contains all class specific templates for the University of Osnabrück
+
+# To update the model in Vivo you need to follow the guide on this page:
+# https://wiki.duraspace.org/display/VIVODOC19x/Class-specific+templates+for+profile+pages
+
+# For this file the needed model is 'asserted-tbox'
+
+kdsf:Professoren
+      vitro:customDisplayViewAnnot
+              "individual--kdsf-professor.ftl"^^xsd:string .
