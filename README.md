@@ -13,6 +13,10 @@ Zur Zeit ist der Ansprachpartner dafür Dominik Feldschnieders (dofeldsc@uos.de)
 ein Issue im Projekt erstellt werden. Ein Beispiel dafür wäre eine "falsche" Sichtbarkeit einer Eigenschaft
 oder eine fehlende Klasse.
 
+Zusätzlich werden Erweiterungen der Ontologien / Annotations / Datenbasis hier versioniert.
+- Das erste Beispiel dafür ist die Datei "add_kdsf_prof_profilpage.n3", welche für das Nachladen eines Klassenspezifischen Templates verwendet wird (https://wiki.duraspace.org/display/VIVODOC19x/Class-specific+templates+for+profile+pages)
+-> Diese Datei 
+
 # Lizenz
 Diese Ontologie(n) steht unter der Lizenz [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).
 
